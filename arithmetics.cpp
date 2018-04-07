@@ -148,16 +148,16 @@ big_integer& big_integer::operator/=(big_integer const& rhs) {
     left = abs(left);
 
     if (left.digits.size() < right.digits.size()) {
-        return *this = 0;
+        return left = 0;
     }
 
     if (right.digits.size() == 1) {
-        std::tie(*this, std::ignore) = left.div_uint(right.digits[0]);
+        std::tie(left, std::ignore) = left.div_uint(right.digits[0]);
 
         if (result_sign)
-            *this = -*this;
+            left = -left;
 
-        return *this;
+        return left;
     }
 
     size_t n = right.digits.size(), m = left.digits.size() - n;
