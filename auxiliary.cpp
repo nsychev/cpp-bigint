@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 big_integer abs(big_integer const& a)  {
-    if (a < 0)
+    if (a.sign)
         return -a;
     return a;
 }

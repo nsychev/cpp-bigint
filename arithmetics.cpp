@@ -4,9 +4,6 @@
 #include <tuple>
 
 std::pair<big_integer, unsigned> big_integer::div_uint(unsigned rhs) const {
-    if (*this < 0)
-        throw std::runtime_error("not working with negative numbers");
-
     big_integer result;
     result.ensure_size(this->digits.size());
 

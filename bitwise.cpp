@@ -1,5 +1,4 @@
 #include "big_integer.h"
-#include <stdexcept>
 
 big_integer& big_integer::operator&=(big_integer const& rhs) {
     ensure_size(std::max(digits.size(), rhs.digits.size()) + 1);
@@ -41,7 +40,7 @@ big_integer& big_integer::operator^=(big_integer const& rhs) {
 }
 
 big_integer& big_integer::operator<<=(int rhs) {
-    digits.insert(digits.begin(), (rhs + 31) / 32, 0);
+    digits.insert(digits.begin(), (rhs + 31u) / 32u, 0);
     rhs = (32 - rhs % 32) % 32;
     return *this >>= rhs;
 }

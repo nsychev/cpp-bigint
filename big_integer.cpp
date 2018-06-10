@@ -1,7 +1,7 @@
 #include "big_integer.h"
 
 #include <string>
-#include <vector>
+#include "vector.h"
 #include <stdexcept>
 
 big_integer::big_integer(): digits(), sign(false) {

@@ -1,10 +1,8 @@
 #ifndef BIG_INTEGER_H
 #define BIG_INTEGER_H
 
-#include <vector>
+#include "vector.h"
 #include <string>
-// #include <cstddef>
-// #include <iosfwd>
 
 struct big_integer
 {
@@ -46,9 +44,11 @@ struct big_integer
     friend bool operator<=(big_integer const& a, big_integer const& b);
     friend bool operator>=(big_integer const& a, big_integer const& b);
 
+    friend big_integer abs(big_integer const& a);
+
     friend std::string to_string(big_integer const& a);
 private:
-    std::vector<unsigned> digits;
+    vector digits;
     bool sign; // a.sign == a < 0
 
     big_integer mul_uint(unsigned rhs) const;
