@@ -542,9 +542,7 @@ TEST(correctness, div_long)
     big_integer a("10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
     big_integer b(                                                     "100000000000000000000000000000000000000");
     big_integer c("100000000000000000000000000000000000000000000000000000");
-    std::cout << to_string(a) << std::endl;
-    big_integer d = a / b;
-    EXPECT_EQ(d, c);
+    EXPECT_EQ(a / b, c);
 }
 
 TEST(correctness, div_long_signed)

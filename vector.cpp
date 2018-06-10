@@ -112,11 +112,10 @@ void vector::clear() {
 }
 
 void vector::insert(const_iterator it, size_t number, uint32_t value) {
+    size_t pos = it - begin();
+
     duplicate();
 
-    assert(it == begin());
-    size_t pos = it - begin();
-    assert(pos == 0);
     ensure_capacity(_size + number);
 
     std::copy_backward(begin() + pos, begin() + _size, begin() + _size + number);
@@ -126,10 +125,13 @@ void vector::insert(const_iterator it, size_t number, uint32_t value) {
 }
 
 void vector::erase(iterator left, iterator right) {
+    size_t pos_left = left - begin();
+    size_t pos_right = right - begin();
+
     duplicate();
 
-    std::copy(right, begin() + _size, left);
-    _size -= right - left;
+    std::copy(begin() + pos_right, begin() + _size, begin() + pos_left);
+    _size -= pos_right - pos_left;
 }
 
 void vector::swap(vector& other) noexcept {

@@ -3,10 +3,8 @@
 
 #include <cstddef>
 #include <memory>
-#include <functional>
 #include <variant>
 #include <array>
-#include <iostream>
 
 struct vector {
 public:
@@ -54,10 +52,6 @@ private:
         big_vector(size_t capacity, std::shared_ptr<uint32_t> data):
                 _capacity(capacity),
                 _data(std::move(data)) {}
-
-        ~big_vector() {
-            std::cout << "Destructing!" << std::endl;
-        }
     };
 
     std::variant<small_vector, big_vector> storage;
